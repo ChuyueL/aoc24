@@ -1,7 +1,6 @@
 import Prelude
 
 type Grid = [(Integer, Char)]
-type Dir = Int
 
 gridWidth :: Integer
 gridWidth = 140

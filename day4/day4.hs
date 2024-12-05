@@ -53,7 +53,6 @@ getXmasCount g = length hasXmas
         allXIdxesWithDirs = [(xIdx, dir) | xIdx <- allXIdxes, dir <- validDirs]
         hasXmas = filter (==True) (map (\(xIdx, dir) -> isXmasInThisDir dir xIdx allMIdxes allAIdxes allSIdxes) allXIdxesWithDirs)
 
-
 main :: IO ()
 main = do
     input <- readFile "input.txt"
