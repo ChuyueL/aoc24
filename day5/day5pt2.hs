@@ -59,14 +59,11 @@ main :: IO ()
 main = do
     input <- readFile "input.txt"
     let (rules, updates) = parseInputLines $ lines input
-    print $ "Rules" ++ show rules
-    print $ "Updates" ++ show updates
     let invalidUpdates = filter (\u -> (checkUpdate u rules == False)) updates
     let fixedUpdates = map (\u -> fixUpdate u rules) invalidUpdates
     -- running the fixing algo the second time catches any cases where fixing one rule might
     -- make an update no longer valid for a rule that had previously been fixed (yes this is janky)
     let fixedUpdates1 = map (\u -> fixUpdate u rules) fixedUpdates 
     print $ "Fixed updates " ++ show fixedUpdates1
-    --print $ "Valid updates " ++ show validUpdates
     let total = sum $ map findMiddleElem fixedUpdates1
     print total
